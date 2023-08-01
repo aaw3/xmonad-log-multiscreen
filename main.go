@@ -13,8 +13,14 @@ func main() {
 		os.Exit(1)
 	}
 
-	conn.BusObject().Call("org.freedesktop.DBus.AddMatch", 0,
-		"type='signal',path='/org/xmonad/Log',interface='org.xmonad.Log',member='Update'")
+	if len(os.Args) < 2 {
+		fmt.Fprintln(os.Stderr, "Missing screen_id argument, rerun as \"xmonad-log screen_id\" ex: xmonad-log 0")
+		os.Exit(1)
+	}
+
+	args := fmt.Sprintf("type='signal',path='/org/xmonad/Log%s',interface='org.xmonad.Log',member='Update'", os.Args[1])
+
+	conn.BusObject().Call("org.freedesktop.DBus.AddMatch", 0, args)
 
 	c := make(chan *dbus.Signal, 10)
 	conn.Signal(c)
