@@ -94,7 +94,7 @@ main = do
         [D.nameAllowReplacement, D.nameReplaceExisting, D.nameDoNotQueue]
 
     -- Example of setting up logging for the first two screens
-    xmonad $ def { logHook = dynamicLogWithPP (myLogHook dbus 0 "DP-2") <+> dynamicLogWithPP (myLogHook dbus 1 "DP-0") }
+    xmonad $ def { logHook = dynamicLogWithPP (myLogHook dbus 0 "DP_2") <+> dynamicLogWithPP (myLogHook dbus 1 "DP_0") }
 
 -- Override the PP values as you would otherwise, adding colors etc depending
 -- on  the statusbar used
