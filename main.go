@@ -18,7 +18,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	args := fmt.Sprintf("type='signal',path='/org/xmonad/Log%s',interface='org.xmonad.Log',member='Update'", os.Args[1])
+	args := fmt.Sprintf("type='signal',path='/org/xmonad/Log-%s',interface='org.xmonad.Log',member='Update'", os.Args[1])
 
 	conn.BusObject().Call("org.freedesktop.DBus.AddMatch", 0, args)
 
